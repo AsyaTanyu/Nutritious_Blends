@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Nutritious Blends</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* Style the search bar */
+        #searchInput {
+            width: 200px;
+            padding: 8px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        /* Highlight class for matched items */
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Nutritious Blends</div>
+        <div class="menu">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="recipes.html">RECIPES</a></li>
+            </ul>
+        </div>
+        <div class="search">
+            <input type="text" id="searchInput" placeholder="Search recipes...">
+            <button id="searchButton">Search</button>
+        </div>
+    </div>
+    <main>
+        <section class="smoothie-recipes">
+            <h2>Featured Smoothie Recipes</h2>
+            <div class="smoothie-grid" id="recipeList">
+                <div class="smoothie-card">
+                    <img src="BerryBlast-Smoothies.jpg" alt="Berry Blast Smoothie">
+                    <h3>Berry Blast Smoothie</h3>
+                    <p>A refreshing blend of berries and yogurt. Perfect for a summer snack when the weather gets too hot. These smoothies are packed with delicious berry flavor and incredibly easy to make!</p>
+                    <a href="recipes/chocolate-banana-smoothie.html" target="_blank">See Full Recipe</a>
+                </div>
+                <div class="smoothie-card">
+                    <img src="close-up-drink-table_1048944-613017.jpg" alt="Green Detox Smoothie">
+                    <h3>Green Detox Smoothie</h3>
+                    <p>Feel your best with this healthy, nutrient-rich green smoothie! Loaded with powerful superfoods like spinach and kale, celery, apple, banana and ginger! Just 136 calories per serving.</p>
+                    <a href="recipes/chocolate-banana-smoothie.html" target="_blank">See Full Recipe</a>
+                </div>
+                <div class="smoothie-card">
+                    <img src="Strawberry-Banana-Chia-Seed-Smoothie-3.jpg" alt="Strawberry Banana Chia Seed Smoothie">
+                    <h3>Banana Chia Seed Smoothie</h3>
+                    <p>Smooth, sweet, tasty, and easy. This Strawberry Banana Chia Seed Smoothie is great for a quick breakfast or snack in under 5 minutes!</p>
+                    <a href="recipes/chocolate-banana-smoothie.html" target="_blank">See Full Recipe</a>
+                </div>
+                <div class="smoothie-card">
+                    <img src="tasty-green-smoothie-with-avocado_23-2148858662.avif" alt="Avocado Smoothie">
+                    <h3>Avocado Smoothie</h3>
+                    <p>Packed with healthy fats, fiber, and essential nutrients, avocados help keep you full, support heart health, and give you lasting energy. To get all the nutrients try out this recipe!</p>
+                    <a href="recipes/chocolate-banana-smoothie.html" target="_blank">See Full Recipe</a>
+                </div>
+                <div class="smoothie-card">
+                    <img src="chocolate-banana-smoothie.jpg" alt="Chocolate Banana Smoothie">
+                    <h3>Chocolate Banana Smoothie</h3>
+                    <p>22 grams of protein with just 5 ingredients mixed together in just 5 minutes. A great recipe for a post workout snack or a simple but delicious breakfast.</p>
+                    <a href="chocolate_banana.html" target="_blank">See Full Recipe</a>
+                </div>
+                <div class="smoothie-card">
+                    <img src="high-angle-delicious-coffee-sugar-cubes_23-2149600722.jpg" alt="Coffee Smoothie">
+                    <h3>Coffee Smoothie</h3>
+                    <p>22 grams of protein with just 5 ingredients mixed together in just 5 minutes. A great recipe for a post workout snack or a simple but delicious breakfast.</p>
+                    <a href="coffee.html" target="_blank">See Full Recipe</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const recipeList = document.getElementById('recipeList');
+        const recipes = recipeList.getElementsByClassName('smoothie-card');
+
+        searchInput.addEventListener('keyup', function () {
+            const filter = searchInput.value.toLowerCase();
+
+            for (let i = 0; i < recipes.length; i++) {
+                const recipeTitle = recipes[i].getElementsByTagName('h3')[0];
+                const textValue = recipeTitle.textContent || recipeTitle.innerText;
+
+                if (textValue.toLowerCase().indexOf(filter) > -1) {
+                    recipes[i].style.display = "";
+                    if (filter !== "") {
+                        recipes[i].classList.add("highlight");
+                    } else {
+                        recipes[i].classList.remove("highlight");
+                    }
+                } else {
+                    recipes[i].style.display = "none";
+                    recipes[i].classList.remove("highlight");
+                }
+            }
+        });
+    </script>
+</body>
+</html>
